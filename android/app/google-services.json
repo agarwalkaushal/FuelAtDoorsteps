@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "710089797869",
+    "firebase_url": "https://fuelatdoorsteps-consumer.firebaseio.com",
+    "project_id": "fuelatdoorsteps-consumer",
+    "storage_bucket": "fuelatdoorsteps-consumer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:710089797869:android:0e5e8989f571a99f87dce4",
+        "android_client_info": {
+          "package_name": "com.fuelatdoorsteps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "710089797869-opaf4n729qfhbsv51mcmvuu118otek31.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fuelatdoorsteps",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "710089797869-n505ogokkg9im6l3e1nlm85e087p3cl5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZl_-LPKrM8QIj86sLd0loSIT6icq3V2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "710089797869-n505ogokkg9im6l3e1nlm85e087p3cl5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
