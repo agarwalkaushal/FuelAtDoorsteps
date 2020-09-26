@@ -143,8 +143,8 @@ class LoginScreen extends React.Component {
                             </View>
                         </View>
                     }
-                    {//TODO: Resend otp flow & error scenario
-                    }
+                    {//TODO: Resend otp, chang number, error scenario
+}
                     <View style={Styles.tcContainer}>
                         <Text style={Styles.tcText}>By signing in you agree to our </Text>
                         <Text style={Styles.tcLinkText}>Terms &amp; Conditions</Text>

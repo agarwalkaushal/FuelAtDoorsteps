@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Button, TextInput, View, Text, Image, StyleSheet, ActivityIndicator, StatusBar, ToastAndroid, TouchableOpacity } from 'react-native';
+import { Button, TextInput, View, Text, ActivityIndicator, StatusBar, ToastAndroid } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import CheckBox from '@react-native-community/checkbox';
 import { Styles } from './Styles'
@@ -48,6 +48,14 @@ class UserFormScreen extends React.Component {
     submitField = () => {
         const { name, industry, email, phoneNumber } = this.state;
 
+        if (phoneNumber && phoneNumber.length != 10) {
+            errorMsg = 'Please enter valid Phone number';
+            ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
+            return;
+        }
+
+        //TODO: Validate email
+
         if (name && industry && email && phoneNumber) {
             this.setState({ validated: true }, () => this.postData());
         } else {
@@ -76,6 +84,7 @@ class UserFormScreen extends React.Component {
                 ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
                 return;
             }
+
         }
     }
 

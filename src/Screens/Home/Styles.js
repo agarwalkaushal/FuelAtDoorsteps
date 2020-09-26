@@ -9,17 +9,10 @@ export const Styles = StyleSheet.create(
             height: '100%',
         },
 
-        loadingIndicator: {
+        indicator: {
             alignItems: 'center',
             justifyContent: 'center',
             flex: 1,
-        },
-
-        signOut: {
-            marginTop: verticalScale(30),
-            width: '30%',
-            justifyContent: 'center',
-            alignSelf: 'center'
         },
     }
 );

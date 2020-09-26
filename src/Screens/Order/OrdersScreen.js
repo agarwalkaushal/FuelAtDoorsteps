@@ -3,23 +3,13 @@ import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { Styles } from './Styles'
 
-class HomeScreen extends React.Component {
+class OrdersScreen extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            loading: true,
+            loading: true
         };
-    }
-
-    componentWillMount() {
-        this.fetchPrices();
-    }
-
-    fetchPrices = async () => {
-    }
-
-    navigateToPaymentScreen = (item) => {
     }
 
     render() {
@@ -27,7 +17,7 @@ class HomeScreen extends React.Component {
         return (
             <View style={Styles.screen}>
                 {loading ?
-                    <ActivityIndicator style={Styles.indicator} color="#000000" /> :
+                    <ActivityIndicator style={Styles.loadingIndicator} color="#000000" /> :
                     <View>
                     </View>
                 }
@@ -36,4 +26,4 @@ class HomeScreen extends React.Component {
     }
 }
 
-export default HomeScreen;
+export default OrdersScreen;

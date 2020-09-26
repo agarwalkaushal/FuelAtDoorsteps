@@ -99,47 +99,6 @@ export const Styles = StyleSheet.create(
             textDecorationLine: 'underline'
         },
 
-        /* aahhaham */
-
-        iconContainer: {
-            height: '50%',
-            justifyContent: 'center',
-            alignSelf: 'center',
-        },
-
-        icon: {
-            height: 100,
-            width: 100,
-        },
-
-        info: {
-            color: 'white',
-            width: '75%',
-            fontSize: 13,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            alignSelf: 'center',
-            marginBottom: 30,
-        },
-
-        info1: {
-            color: 'white',
-            width: '75%',
-            fontSize: 13,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            alignSelf: 'center',
-            marginBottom: 10,
-        },
-
-        inputContainer: {
-            padding: 5,
-            margin: 5,
-            width: '100%',
-            justifyContent: 'center',
-            alignItems: 'center'
-        },
-
         resendCode: {
             color: 'white',
             width: '75%',
@@ -158,9 +117,6 @@ export const Styles = StyleSheet.create(
             textAlign: 'center',
             alignSelf: 'center',
             marginBottom: 30,
-        }
-
-
-        
+        },
     }
 )

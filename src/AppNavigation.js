@@ -5,7 +5,7 @@ import SplashScreen from './Screens/Splash/SplashScreen';
 import LoginScreen from './Screens/Login/LoginScreen';
 import UserFormScreen from './Screens/Form/UserFormScreen';
 import HomeScreen from './Screens/Home/HomeScreen';
-import UserScreen from './Screens/User/UserScreen'
+import OrdersScreen from './Screens/Order/OrdersScreen'
 import {
     createSwitchNavigator,
     createAppContainer,
@@ -25,14 +25,14 @@ const HomeStack = createStackNavigator(
     }
 );
 
-const UserStack = createStackNavigator(
+const OrdersStack = createStackNavigator(
     {
-        Profile: {
-            screen: UserScreen,
+        Orders: {
+            screen: OrdersScreen,
         },
     },
     {
-        initialRouteName: 'Profile',
+        initialRouteName: 'Orders',
     }
 );
 
@@ -44,19 +44,19 @@ const TabNavigator = createBottomTabNavigator(
                 tabBarLabel: 'Home',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
-                        // source={require('./Images/lead.png')}
+                        source={require('./Images/fuel.png')}
                         style={{ width: 25, height: 25, tintColor: tintColor }}
                     />
                 ),
             },
         },
-        User: {
-            screen: UserStack,
+        Orders: {
+            screen: OrdersStack,
             navigationOptions: {
-                tabBarLabel: 'Profile',
+                tabBarLabel: 'Orders',
                 tabBarIcon: ({ tintColor }) => (
                     <Image
-                        // source={require('./Images/user.png')}
+                        source={require('./Images/list.png')}
                         style={{ width: 25, height: 25, tintColor: tintColor }}
                     />
                 ),
