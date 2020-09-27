@@ -22,8 +22,8 @@ class LoginScreen extends React.Component {
         };
     }
 
-    getUserDetails = async (uid) => {
-        const userDetails = await firestore().collection('Users').doc(uuid).get();
+    getUserDetails = async (user) => {
+        const userDetails = await firestore().collection('Users').doc(user.uid).get();
         if (userDetails._data && Object.keys(userDetails._data).length !== 0)
             this.navigateToHome()
         else
@@ -33,7 +33,7 @@ class LoginScreen extends React.Component {
     componentWillMount() {
         this.unsubscribe = auth().onAuthStateChanged(user => {
             if (user) {
-                this.getUserDetails(user.uid)
+                this.getUserDetails(user)
             }
         });
     }
@@ -87,7 +87,7 @@ class LoginScreen extends React.Component {
             <>
                 <StatusBar hidden />
                 <View style={Styles.screen}>
-                    <Text style={Styles.appName}>FUEL at DOORSTEPS</Text>
+                    <Text style={Styles.appName}>LOG IN</Text>
                     {/* <Text style={Styles.signText}>To proceed either use you Google account or Phone number</Text> */}
                     {!otpView &&
                         <>

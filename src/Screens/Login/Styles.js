@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../Utils/colors'
 const { scale, verticalScale } = require("../../Utils/responsiveScaling");
 
 export const Styles = StyleSheet.create(
     {
         screen: {
-            backgroundColor: '#1e121e',
+            backgroundColor: COLORS.primaryLight,
             width: '100%',
             height: '100%',
         },
@@ -14,20 +15,20 @@ export const Styles = StyleSheet.create(
             alignSelf: 'center',
             fontSize: scale(16),
             fontWeight: 'bold',
-            color: '#FFFFFF',
+            color: COLORS.white,
         },
 
         signText: {
             marginTop: verticalScale(25),
             alignSelf: 'center',
             fontSize: scale(12),
-            color: '#FFFFFF',
+            color: COLORS.white,
         },
 
         googleSignIn: {
             marginTop: verticalScale(120),
             alignSelf: 'center',
-            width: scale(264), 
+            width: scale(264),
             height: verticalScale(48),
         },
 
@@ -35,19 +36,19 @@ export const Styles = StyleSheet.create(
             marginTop: verticalScale(15),
             alignSelf: 'center',
             fontSize: scale(12),
-            color: '#FFFFFF',
+            color: COLORS.white,
         },
 
         phoneInput: {
             marginTop: verticalScale(15),
             alignSelf: 'center',
             textAlign: 'center',
-            width: scale(254), 
+            width: scale(254),
             height: verticalScale(42),
             borderRadius: verticalScale(2.5),
             borderWidth: scale(1),
-            borderColor: '#D3D3D3',
-            color: 'white',
+            borderColor: COLORS.lightGray,
+            color: COLORS.white,
             fontSize: 14,
             fontWeight: 'bold'
         },
@@ -64,7 +65,7 @@ export const Styles = StyleSheet.create(
         },
 
         otpInputView: {
-            width: '65%', 
+            width: '65%',
             height: 50,
         },
 
@@ -73,7 +74,7 @@ export const Styles = StyleSheet.create(
             height: verticalScale(45),
             borderWidth: 0,
             borderBottomWidth: 1,
-            color: 'white',
+            color: COLORS.white,
         },
 
         underlineStyleHighLighted: {
@@ -89,34 +90,34 @@ export const Styles = StyleSheet.create(
         },
 
         tcText: {
-            color: '#FFFFFF',
+            color: COLORS.white,
             fontSize: scale(8)
         },
 
         tcLinkText: {
-            color: '#add8e6',
+            color: COLORS.lightBlue,
             fontSize: scale(8),
             textDecorationLine: 'underline'
         },
 
-        resendCode: {
-            color: 'white',
-            width: '75%',
-            fontSize: 13.5,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            alignSelf: 'center',
-            marginTop: 15,
-            marginBottom: 30,
-        },
+        // resendCode: {
+        //     color:  COLORS.white,
+        //     width: '75%',
+        //     fontSize: 13.5,
+        //     fontWeight: 'bold',
+        //     textAlign: 'center',
+        //     alignSelf: 'center',
+        //     marginTop: 15,
+        //     marginBottom: 30,
+        // },
 
-        changeNumber: {
-            color: '#735fbe',
-            fontSize: 12,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            alignSelf: 'center',
-            marginBottom: 30,
-        },
+        // changeNumber: {
+        //     color: '#735fbe',
+        //     fontSize: 12,
+        //     fontWeight: 'bold',
+        //     textAlign: 'center',
+        //     alignSelf: 'center',
+        //     marginBottom: 30,
+        // },
     }
 )

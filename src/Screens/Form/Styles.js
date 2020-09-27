@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../Utils/colors'
 const { scale, verticalScale } = require("../../Utils/responsiveScaling");
 
 export const Styles = StyleSheet.create(
     {
         screen: {
-            backgroundColor: '#1e121e',
+            backgroundColor: COLORS.primaryLight,
             width: '100%',
             height: '100%',
         },
@@ -15,7 +16,7 @@ export const Styles = StyleSheet.create(
             alignSelf: 'center',
             fontSize: scale(16),
             fontWeight: 'bold',
-            color: '#FFFFFF',
+            color: COLORS.white,
         },
 
         formRow: {
@@ -33,7 +34,7 @@ export const Styles = StyleSheet.create(
         },
 
         heading: {
-            color: 'white',
+            color: COLORS.white,
             fontSize: scale(10),
             marginBottom: verticalScale(10),
         },
@@ -41,8 +42,8 @@ export const Styles = StyleSheet.create(
         input: {
             borderWidth: scale(1),
             borderRadius: scale(5),
-            borderColor: 'white',
-            color: 'white',
+            borderColor: COLORS.white,
+            color: COLORS.white,
             fontSize: scale(15),
             fontWeight: 'bold',
         },
@@ -51,12 +52,12 @@ export const Styles = StyleSheet.create(
             alignSelf: 'center',
             fontSize: scale(15),
             marginLeft: scale(5),
-            color: '#FFFFFF',
+            color: COLORS.white,
         },
 
         button: {
             marginTop: 15,
-            paddingLeft:scale(25),
+            paddingLeft: scale(25),
             width: scale(100),
         },
 

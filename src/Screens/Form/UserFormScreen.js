@@ -15,7 +15,7 @@ class UserFormScreen extends React.Component {
             name: null,
             industry: null,
             address: null,
-            number: props.navigation.getParam('phoneNumber', null),
+            phoneNumber: props.navigation.getParam('phoneNumber', null),
             email: props.navigation.getParam('email', null),
             daily: true,
             validated: false,
@@ -27,7 +27,7 @@ class UserFormScreen extends React.Component {
     }
 
     postData = () => {
-        const { name, industry, email, phoneNumber, daily } = this.state;
+        const { name, industry, email, phoneNumber, daily, address } = this.state;
         this.setState({ submittingForm: true });
         firestore()
             .collection('Users')
@@ -38,6 +38,7 @@ class UserFormScreen extends React.Component {
                 email: email,
                 phoneNumber: phoneNumber,
                 daily: daily,
+                address: address,
             })
             .then(() => {
                 ToastAndroid.show('Details saved successfully', ToastAndroid.SHORT);
@@ -47,8 +48,9 @@ class UserFormScreen extends React.Component {
 
     submitField = () => {
         const { name, industry, email, phoneNumber } = this.state;
+        let errorMsg = '';
 
-        if (phoneNumber && phoneNumber.length != 10) {
+        if (phoneNumber && phoneNumber.length != 10 && phoneNumber.length != 13) {
             errorMsg = 'Please enter valid Phone number';
             ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
             return;
@@ -59,8 +61,6 @@ class UserFormScreen extends React.Component {
         if (name && industry && email && phoneNumber) {
             this.setState({ validated: true }, () => this.postData());
         } else {
-            let errorMsg = '';
-
             if (!name) {
                 errorMsg = 'Name cannot be empty';
                 ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
