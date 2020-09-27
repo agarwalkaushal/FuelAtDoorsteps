@@ -47,7 +47,7 @@ class UserFormScreen extends React.Component {
     }
 
     submitField = () => {
-        const { name, industry, email, phoneNumber } = this.state;
+        const { name, industry, email, phoneNumber, address } = this.state;
         let errorMsg = '';
 
         if (phoneNumber && phoneNumber.length != 10 && phoneNumber.length != 13) {
@@ -58,7 +58,7 @@ class UserFormScreen extends React.Component {
 
         //TODO: Validate email
 
-        if (name && industry && email && phoneNumber) {
+        if (name && industry && email && phoneNumber && address) {
             this.setState({ validated: true }, () => this.postData());
         } else {
             if (!name) {
@@ -81,6 +81,12 @@ class UserFormScreen extends React.Component {
 
             if (!phoneNumber) {
                 errorMsg = 'Phone number cannot be empty';
+                ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
+                return;
+            }
+
+            if (!address) {
+                errorMsg = 'Address cannot be empty';
                 ToastAndroid.show(errorMsg, ToastAndroid.SHORT);
                 return;
             }

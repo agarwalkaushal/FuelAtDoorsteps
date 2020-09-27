@@ -32,20 +32,20 @@ class HomeScreen extends React.Component {
             <View style={Styles.screen}>
                 {loading ?
                     <ActivityIndicator style={Styles.indicator} color="#000000" /> :
-                    <View style={{ height: '100%' }}>
+                    <View style={Styles.container}>
                         <Text style={Styles.today}>FUEL PRICES TODAY</Text>
                         <TouchableOpacity style={Styles.priceContainer} onPress={this.navigateToCheckoutScreen}>
                             <Text style={Styles.priceContainerHeading}>Petrol</Text>
                             <View style={Styles.priceRow}>
                                 <Text style={Styles.price}>₹{petrol}/- </Text>
-                                <Text style={Styles.unit}>per lt</Text>
+                                <Text style={Styles.unit}>per lt.</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={Styles.priceContainer} onPress={this.navigateToCheckoutScreen}>
                             <Text style={Styles.priceContainerHeading}>Diesal</Text>
                             <View style={Styles.priceRow}>
                                 <Text style={Styles.price}>₹{diesal}/- </Text>
-                                <Text style={Styles.unit}>per lt</Text>
+                                <Text style={Styles.unit}>per lt.</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={Styles.checkoutContainer} onPress={this.navigateToCheckoutScreen}>

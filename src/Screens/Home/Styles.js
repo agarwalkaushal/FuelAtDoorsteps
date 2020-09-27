@@ -16,6 +16,11 @@ export const Styles = StyleSheet.create(
             flex: 1,
         },
 
+        container: {
+            width: '100%',
+            height: '100%',
+        },
+
         today: {
             marginHorizontal: scale(15),
             marginVertical: verticalScale(15),
