@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, ActivityIndicator, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, ActivityIndicator, Text, TextInput, TouchableOpacity, ScrollView, ToastAndroid } from 'react-native';
 import { Styles } from './Styles'
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import CheckBox from '@react-native-community/checkbox';
+import axios from 'axios';
+import RazorpayCheckout from 'react-native-razorpay';
+import { Buffer } from 'buffer'
 
 class CheckoutScreen extends React.Component {
 
@@ -20,6 +23,7 @@ class CheckoutScreen extends React.Component {
             total: 0,
             isDefault: true,
             address: null,
+            paymentProcessing: false,
         };
     }
 
@@ -68,8 +72,65 @@ class CheckoutScreen extends React.Component {
         this.setState({ total: Math.round(petrolTotal + diesalTotal), diesalQt: qt })
     }
 
+    getOrderId = () => {
+        this.setState({ paymentProcessing: true })
+        const { total, userData } = this.state
+        if (total === 0) {
+            this.setState({ paymentProcessing: false })
+            ToastAndroid.show("Order Total cannot be 0", ToastAndroid.SHORT)
+            return
+        }
+        if (isNaN(total)) {
+            this.setState({ paymentProcessing: false })
+            ToastAndroid.show("Please enter valid quanity", ToastAndroid.SHORT)
+            return
+        }
+        const username = 'rzp_test_IkAVdLiSzXUHlL'
+        const password = 'wab2X3AqhaejqPtbteWmOAbA'
+        const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+        axios.post(
+            'https://api.razorpay.com/v1/orders',
+            {
+                "amount": total * 100,
+                "currency": "INR",
+            },
+            {
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization': `Basic ${token}`
+                },
+
+            }
+        ).then(response => {
+            var options = {
+                currency: 'INR',
+                key: username,
+                amount: total * 100,
+                name: 'Fuel at Doorsteps',
+                order_id: response.id,
+                prefill: {
+                    email: userData.email,
+                    contact: userData.phoneNumber,
+                    name: userData.name
+                },
+                theme: { color: '#2e1c2e' }
+            }
+            RazorpayCheckout.open(options).then((data) => {
+                console.log(data)
+                this.props.navigation.navigate('Orders');
+            }).catch((error) => {
+                alert(`Sorry! Your transaction has failed please try again. Reason ${error.description}`);
+                console.log(error)
+                this.setState({ paymentProcessing: false })
+            });
+        }).catch(error => {
+            console.log(error)
+            this.setState({ paymentProcessing: false })
+        });;
+    }
+
     render() {
-        const { loading, petrol, diesal, petrolQt, diesalQt, total, userData, isDefault, address } = this.state
+        const { loading, petrol, diesal, petrolQt, diesalQt, total, userData, isDefault, address, paymentProcessing } = this.state
         return (
             <View>
                 <View style={Styles.screen}>
@@ -125,9 +186,11 @@ class CheckoutScreen extends React.Component {
                                         onChangeText={text => this.setState({ address: text })} />
                                 </View>
                             </ScrollView>
-                            <TouchableOpacity style={Styles.payContainer}>
-                                <Text style={Styles.payText}>Pay Now</Text>
-                            </TouchableOpacity>
+                            {paymentProcessing ?
+                                <ActivityIndicator style={Styles.loadingIndicator} color="#000000" /> :
+                                <TouchableOpacity style={Styles.payContainer} onPress={this.getOrderId}>
+                                    <Text style={Styles.payText}>Pay Now</Text>
+                                </TouchableOpacity>}
                         </View>
                     }
                 </View>

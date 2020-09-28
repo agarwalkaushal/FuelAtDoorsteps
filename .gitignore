@@ -63,3 +63,4 @@ buck-out/
 *.index.android.bundle
 *index.android.bundle
 android/app/src/main/res/drawable-*dpi/*
+java_pid1617.hprof

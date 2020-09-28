@@ -8,18 +8,25 @@ export const Styles = StyleSheet.create(
             backgroundColor: COLORS.primaryLight,
             width: '100%',
             height: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
         },
 
         image: {
-            marginTop: verticalScale(250),
             width: scale(60),
             height: scale(60),
-            alignSelf: 'center',
+        },
+
+        name: {
+            marginTop: verticalScale(35),
+            fontWeight: 'bold',
+            fontSize: scale(16),
+            color: COLORS.white,
         },
 
         indicator: {
             marginTop: verticalScale(50),
-            alignSelf: 'center',
-        }
+        },
+
     }
 );
