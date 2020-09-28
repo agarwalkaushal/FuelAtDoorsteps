@@ -9,8 +9,8 @@ class HomeScreen extends React.Component {
         super(props);
         this.state = {
             loading: false,
-            diesal: 82.10,
-            petrol: 85.60,
+            diesal: 0.0,
+            petrol: 0.0,
         };
     }
 
