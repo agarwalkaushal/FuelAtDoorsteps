@@ -8,4 +8,5 @@ export const COLORS = {
     lightGray: '#D3D3D3',
     lightBlue: '#add8e6',
     offWhite: '#ededed',
+    button: '#735fbe',
   }

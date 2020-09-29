@@ -4,7 +4,6 @@ import { View, ActivityIndicator, Text, TouchableOpacity } from 'react-native';
 import { Styles } from './Styles'
 
 class HomeScreen extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {

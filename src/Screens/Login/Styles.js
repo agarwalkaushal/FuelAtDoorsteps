@@ -59,6 +59,22 @@ export const Styles = StyleSheet.create(
             alignSelf: 'center'
         },
 
+        otpViewText: {
+            marginTop: verticalScale(150),
+            alignSelf: 'center',
+            marginHorizontal: scale(20),
+            fontSize: scale(14),
+            color: COLORS.white,
+            lineHeight: verticalScale(16),
+            fontWeight: 'bold',
+        },
+
+        otpViewEditText: {
+            fontSize: scale(14),
+            fontWeight: 'bold',
+            color: COLORS.button,
+        },
+
         otpView: {
             marginTop: verticalScale(120),
             alignSelf: 'center',
@@ -67,6 +83,15 @@ export const Styles = StyleSheet.create(
         otpInputView: {
             width: '65%',
             height: 50,
+        },
+
+        resendCodeText: {
+            fontSize: scale(14),
+            fontWeight: 'bold',
+            color: COLORS.button,
+            textAlign: 'center',
+            alignSelf: 'center',
+            marginTop: verticalScale(15),
         },
 
         underlineStyleBase: {
@@ -99,25 +124,5 @@ export const Styles = StyleSheet.create(
             fontSize: scale(8),
             textDecorationLine: 'underline'
         },
-
-        // resendCode: {
-        //     color:  COLORS.white,
-        //     width: '75%',
-        //     fontSize: 13.5,
-        //     fontWeight: 'bold',
-        //     textAlign: 'center',
-        //     alignSelf: 'center',
-        //     marginTop: 15,
-        //     marginBottom: 30,
-        // },
-
-        // changeNumber: {
-        //     color: '#735fbe',
-        //     fontSize: 12,
-        //     fontWeight: 'bold',
-        //     textAlign: 'center',
-        //     alignSelf: 'center',
-        //     marginBottom: 30,
-        // },
     }
 )

@@ -1,23 +1,28 @@
 /* eslint-disable prettier/prettier */
+import React from 'react';
+import { Image, TouchableOpacity } from 'react-native';
+import { scale } from '../src/Utils/responsiveScaling'
+import { COLORS } from './Utils/colors'
 import SplashScreen from './Screens/Splash/SplashScreen';
 import LoginScreen from './Screens/Login/LoginScreen';
 import UserFormScreen from './Screens/Form/UserFormScreen';
 import HomeScreen from './Screens/Home/HomeScreen';
 import OrdersScreen from './Screens/Order/OrdersScreen';
 import CheckoutScreen from './Screens/Checkout/CheckoutScreen';
+import SettingsScreen from './Screens/Settings/SettingsScreen';
 import {
     createSwitchNavigator,
     createAppContainer,
 } from 'react-navigation';
-
 import { createStackNavigator } from 'react-navigation-stack';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
-import { COLORS } from './Utils/colors'
+
 
 const TabNavigator = createMaterialTopTabNavigator(
     {
         Home: {
             screen: HomeScreen,
+            //Set icon here in navigationoptions
         },
         Orders: {
             screen: OrdersScreen,
@@ -33,12 +38,21 @@ const TabNavigator = createMaterialTopTabNavigator(
             },
             style: {
                 backgroundColor: COLORS.white,
-            }
+            },
+            // showIcon: true, For icons
         },
         animationEnabled: true,
     },
 );
 
+TabNavigator.navigationOptions = ({ navigation }) => ({
+    headerRight: () =>
+        <React.Fragment>
+            <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
+                <Image source={require('../src/Images/settings.png')} style={{ width: scale(20), height: scale(20), marginRight: scale(10) }} />
+            </TouchableOpacity>
+        </React.Fragment>
+})
 
 const HomeScreenNavigator = createStackNavigator(
     {
@@ -54,6 +68,7 @@ const HomeScreenNavigator = createStackNavigator(
         },
 
         Checkout: CheckoutScreen,
+        Settings: SettingsScreen,
     },
 
     {

@@ -57,6 +57,7 @@ class LoginScreen extends React.Component {
             const googleCredential = auth.GoogleAuthProvider.credential(idToken);
             return auth().signInWithCredential(googleCredential);
         } catch (error) {
+            this.setState({ isSigninInProgress: false })
             console.log(error.code)
         }
     }
@@ -67,6 +68,7 @@ class LoginScreen extends React.Component {
             const confirmation = await auth().signInWithPhoneNumber('+91' + this.state.number);
             this.setState({ confirm: confirmation, verficationId: confirmation._verificationId, isSigninInProgress: false, otpView: true })
         } catch (error) {
+            this.setState({ isSigninInProgress: false })
             console.log(error.code)
         }
     }
@@ -77,8 +79,13 @@ class LoginScreen extends React.Component {
         try {
             await confirm.confirm(code);
         } catch (error) {
+            this.setState({ confirmingCode: false })
             console.log(error.code)
         }
+    }
+
+    editNumber = () => {
+        this.setState({ otpView: false })
     }
 
     render() {
@@ -87,10 +94,11 @@ class LoginScreen extends React.Component {
             <>
                 <StatusBar hidden />
                 <View style={Styles.screen}>
-                    <Text style={Styles.appName}>LOG IN</Text>
+
                     {/* <Text style={Styles.signText}>To proceed either use you Google account or Phone number</Text> */}
                     {!otpView &&
                         <>
+                            <Text style={Styles.appName}>LOG IN</Text>
                             <GoogleSigninButton
                                 style={Styles.googleSignIn}
                                 size={GoogleSigninButton.Size.Wide}
@@ -122,29 +130,36 @@ class LoginScreen extends React.Component {
                     }
 
                     {otpView &&
-                        <View style={Styles.otpView}>
-                            <OTPInputView
-                                style={Styles.otpInputView}
-                                pinCount={6}
-                                onCodeChanged={text => this.setState({ code: text })}
-                                autoFocusOnLoad
-                                codeInputFieldStyle={Styles.underlineStyleBase}
-                                codeInputHighlightStyle={Styles.underlineStyleHighLighted}
-                            />
-                            <View style={Styles.button}>
-                                {!confirmingCode ?
-                                    <Button
-                                        title="Confirm Code"
-                                        color="#735fbe"
-                                        onPress={this.confirmCode}
-                                        disabled={code ? (code.length !== 6 ? true : false) : true}
-                                    /> :
-                                    <ActivityIndicator size="small" color="#D3D3D3" />}
+                        <>
+                            <Text style={Styles.otpViewText}>Please enter OTP sent to {"\n"}+91-{number} <Text onPress={this.editNumber} style={Styles.otpViewEditText}>(EDIT)</Text></Text>
+                            <View style={Styles.otpView}>
+                                <OTPInputView
+                                    style={Styles.otpInputView}
+                                    pinCount={6}
+                                    onCodeChanged={text => this.setState({ code: text })}
+                                    autoFocusOnLoad
+                                    codeInputFieldStyle={Styles.underlineStyleBase}
+                                    codeInputHighlightStyle={Styles.underlineStyleHighLighted}
+                                />
+                                <View style={Styles.button}>
+                                    {!confirmingCode ?
+                                        <>
+                                            <Button
+                                                title="Confirm Code"
+                                                color="#735fbe"
+                                                onPress={this.confirmCode}
+                                                disabled={code ? (code.length !== 6 ? true : false) : true}
+                                            />
+                                            <TouchableOpacity onPress={this.phoneSignIn}>
+                                                <Text style={Styles.resendCodeText}>RESEND OTP</Text>
+                                            </TouchableOpacity>
+                                        </> :
+                                        <ActivityIndicator size="small" color="#D3D3D3" />}
+                                </View>
                             </View>
-                        </View>
+
+                        </>
                     }
-                    {//TODO: Resend otp, chang number, error scenario
-}
                     <View style={Styles.tcContainer}>
                         <Text style={Styles.tcText}>By signing in you agree to our </Text>
                         <Text style={Styles.tcLinkText}>Terms &amp; Conditions</Text>
