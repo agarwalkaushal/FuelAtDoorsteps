@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { View, ActivityIndicator, StatusBar, Image } from 'react-native';
+import { View, ActivityIndicator, StatusBar, Image, Text } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import { Styles } from './Styles'
 import firestore from '@react-native-firebase/firestore';
@@ -47,6 +47,7 @@ class SplashScreen extends React.Component {
                 <StatusBar hidden />
                 <View style={Styles.screen}>
                     <Image source={require('../../Images/fuel.png')} style={Styles.image} />
+                    <Text style={Styles.name}>FUEL at Doorsteps</Text>
                     <ActivityIndicator style={Styles.indicator} color={'#FFFFFF'} />
                 </View>
             </>

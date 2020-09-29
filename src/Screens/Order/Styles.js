@@ -16,11 +16,25 @@ export const Styles = StyleSheet.create(
             flex: 1,
         },
 
-        signOut: {
-            marginTop: verticalScale(30),
-            width: '30%',
+        emptyScreen: {
+            width: '100%',
+            height: '100%',
             justifyContent: 'center',
-            alignSelf: 'center'
+        },
+
+        emptyImage: {
+            marginTop: verticalScale(-50),
+            width: scale(60),
+            height: scale(60),
+            alignSelf: 'center',
+        },
+
+        emptyText: {
+            marginTop: verticalScale(25),
+            fontWeight: 'bold',
+            fontSize: scale(16),
+            color: COLORS.primaryLight,
+            alignSelf: 'center',
         },
     }
 );
